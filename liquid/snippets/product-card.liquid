@@ -1,0 +1,33 @@
+{% assign colour_number = 0 %}
+
+{% for option in product.options_with_values | where: 'name', 'Colour' %}
+    {% assign colour_number = colour_number | plus: 1 %}    
+{% endfor %}
+
+<div class="product-card">
+    <div class="product-card__media">
+        <a href="{{ product.url | within: collection }}" aria-label="{{ product.title }}">
+            <img 
+                src="{{ product.featured_image.src | img_url: '320x320', crop: "center" }}" 
+                alt="{{ product.title }}" 
+                width="320" 
+                height="320" 
+            >
+            {% render 'icon-wishlist-heart' %}
+        </a>
+    </div>
+
+    <div class="product-card__footer">
+        <div class="product-card__title">
+            <a href="{{ product.url | within: collection }}" aria-label="{{ product.title }}">
+                <span>{{ product.title }}</span>
+            </a>
+        </div>
+        <div class="product-card__price">
+            <p>{{ product.price | money_without_trailing_zeros }}</p>
+        </div>
+        <div class="product-card__colours">
+            <p>{{ colour_number }} {{ colour_number | pluralize: 'Colour', 'Colours'}} Available</p>
+        </div>
+    </div>
+</div>

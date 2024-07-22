@@ -1,0 +1,10 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+    :root {
+        --c-blue: 32 43 203;
+        --c-orange: 255 105 50;
+    }
+  }
